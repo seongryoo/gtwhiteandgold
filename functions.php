@@ -142,9 +142,11 @@ function generate_tags( $taxonomy ) {
     $term_name = $term->name;
     $term_id = $term->term_id;
     $term_slug = $term->slug;
+    $attribute = 'data-' . $term->slug;
     $markup = '';
     $markup .= '<div class="input-pair">';
-      $markup .= '<input type="checkbox" class="visually-hidden" id="' . $term_slug . '">';
+      $markup .= '<input type="checkbox" class="visually-hidden" id="' . $term_slug . '" ';
+      $markup .= 'data-acts-on="' . $attribute . '">';
       $markup .= '<label for="' . $term_slug . '"><span class="check"></span>' . $term_name . '</label>';
     $markup .= '</div>';
     echo $markup;
@@ -155,43 +157,75 @@ function generate_tags( $taxonomy ) {
  * Helper method for filter card generation
  */
 function generate_filter_card( $post ) {
-  var_dump( $post );
   $id = $post->ID;
-  $duration_desc = get_post_meta( $id, 'post_opp_meta_level' );
-  $location_desc = get_post_meta( $id, 'post_opp_meta_loc' );
+  $duration_desc = get_post_meta( $id, 'post_opp_meta_level', true );
+  $location_desc = get_post_meta( $id, 'post_opp_meta_loc', true );
   $title = $post->post_title;
   $url = get_permalink( $id );
-  $description = get_post_meta( $id, 'post_opp_meta_desc' );
+  $description = get_post_meta( $id, 'post_opp_meta_desc', true );
 
   $type_objs = get_the_terms( $id, 'taxon_type' );
   $time_objs = get_the_terms( $id, 'taxon_time' );
   $loc_objs = get_the_terms( $id, 'taxon_loc' );
 
-  $markup = '';
-  $markup .= '<div class="card">';
-    $markup .= '<div class="info">';
-      $markup .= '<div class="duration">';
-          //   <div class="card">
+  $data_attr = '';
+  foreach ( $type_objs as $term ) {
+    $attribute = 'data-' . $term->slug;
+    $data_attr .= esc_attr( $attribute ) . ' ';
+  }
+  foreach ( $time_objs as $term ) {
+    $attribute = 'data-' . $term->slug;
+    $data_attr .= esc_attr( $attribute ) . ' ';
+  }
+  foreach ( $loc_objs as $term ) {
+    $attribute = 'data-' . $term->slug;
+    $data_attr .= esc_attr( $attribute ) . ' ';
+  }
 
-          //   <div class="info">
-          //     <div class="duration">
-          //       <p>Semester-long</p>
-          //     </div>
-          //     <div class="location">
-          //       <p>On campus</p>
-          //     </div>
-          //   </div>
-            
-          //   <h3>Sign up for a Serve-Learn-Sustain affiliated course</h3>
-            
-          //   <p class="desc">
-          //     SLS Affiliated Courses span all six Colleges. These courses teach students about "creating sustainable communities" from the perspective of their specific disciplines or course topics. They align with one or more parts of SLS' approach to creating sustainable communities.
-          //   </p>
-            
-          //   <div class="tags">
-          //     <div class="tag"><p><i class="fa fa-book"></i>Academics</p></div>
-          //   </div><!--tags-->
-          // </div><!--card-->
+  $markup = '';
+  $markup .= '<div class="card" ' . $data_attr . '>';
+
+
+    $markup .= '<div class="info">';
+      if ( $duration_desc != '' ) {
+        $markup .= '<div class="duration">';
+          $markup .= '<p>' . $duration_desc . '</p>';
+        $markup .= '</div>';
+      }
+
+      if ( $location_desc != '' ) {
+        $markup .= '<div class="location">';
+          $markup .= '<p>' . $location_desc . '</p>';
+        $markup .= '</div>';
+      }
+    $markup .= '</div>'; // End info
+
+
+    $markup .= '<h3>' . $title . '</h3>';
+
+    if ( $description != '' ) {
+      $markup .= '<div class="desc">';
+        $markup .= $description;
+      $markup .= '</div>';
+    }
+
+
+    $markup .= '<div class="tags">';
+      foreach( $type_objs as $term ) {
+        $icon = 'fa-book';
+        // Tag
+        $markup .= '<div class="tag">';
+          $markup .= '<p>';
+            $markup .= '<i class="fa ' . $icon . '"></i>';
+            $markup .= $term->name;
+          $markup .= '</p>';
+        $markup .= '</div>';
+      }
+    $markup .= '</div>'; // End tags
+
+
+  $markup .= '</div>';
+  echo $markup;
 }
 
 /**
