@@ -155,5 +155,85 @@ function generate_tags( $taxonomy ) {
  * Helper method for filter card generation
  */
 function generate_filter_card( $post ) {
-  
+  var_dump( $post );
+  $id = $post->ID;
+  $duration_desc = get_post_meta( $id, 'post_opp_meta_level' );
+  $location_desc = get_post_meta( $id, 'post_opp_meta_loc' );
+  $title = $post->post_title;
+  $url = get_permalink( $id );
+  $description = get_post_meta( $id, 'post_opp_meta_desc' );
+
+  $type_objs = get_the_terms( $id, 'taxon_type' );
+  $time_objs = get_the_terms( $id, 'taxon_time' );
+  $loc_objs = get_the_terms( $id, 'taxon_loc' );
+
+  $markup = '';
+  $markup .= '<div class="card">';
+    $markup .= '<div class="info">';
+      $markup .= '<div class="duration">';
+          //   <div class="card">
+
+          //   <div class="info">
+          //     <div class="duration">
+          //       <p>Semester-long</p>
+          //     </div>
+          //     <div class="location">
+          //       <p>On campus</p>
+          //     </div>
+          //   </div>
+            
+          //   <h3>Sign up for a Serve-Learn-Sustain affiliated course</h3>
+            
+          //   <p class="desc">
+          //     SLS Affiliated Courses span all six Colleges. These courses teach students about "creating sustainable communities" from the perspective of their specific disciplines or course topics. They align with one or more parts of SLS' approach to creating sustainable communities.
+          //   </p>
+            
+          //   <div class="tags">
+          //     <div class="tag"><p><i class="fa fa-book"></i>Academics</p></div>
+          //   </div><!--tags-->
+          // </div><!--card-->
+}
+
+/**
+ * Helper method for filter card querying 
+ */
+function generate_filter_cards() {
+  //Protect against arbitrary paged values
+  $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+  $args = array(
+    'post_type' => 'post_opp',
+    'post_status' => 'publish',
+    'paged' => $paged,
+    'posts_per_page' => 20,
+    'meta_query' => array(
+      'relation' => 'OR',
+      array(
+        'key' => 'post_opp_meta_will_expire',
+        'value' => false,
+      ),
+      array(
+        'key' => 'post_opp_meta_expr',
+        'value' => '',
+      ),
+      array(
+        'key' => 'post_opp_meta_expr',
+        'value' => date('Y-m-d'),
+        'compare' => '>',
+      ),
+    ),
+  );
+  $query = new WP_Query( $args );
+  $posts = $query->posts;
+  foreach( $posts as $post ) {
+    generate_filter_card( $post );
+  }
+
+  $big = 999999999; // need an unlikely integer
+ 
+  echo paginate_links( array(
+      'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+      'format' => '?paged=%#%',
+      'current' => max( 1, get_query_var('paged') ),
+      'total' => $query->max_num_pages
+  ) );
 }

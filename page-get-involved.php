@@ -54,6 +54,8 @@ get_header(); ?>
       
       <div class="section pile col-md-9">
         <div class="cards">
+
+            <?php generate_filter_cards(); ?>
           
           <div class="card">
 
