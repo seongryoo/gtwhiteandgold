@@ -154,6 +154,63 @@ function generate_tags( $taxonomy ) {
 }
 
 /**
+ * Helper method for opportunity single page
+ */
+function generate_opportunity( $post ) {
+  $id = $post->ID;
+  $duration_desc = get_post_meta( $id, 'post_opp_meta_level', true );
+  $location_desc = get_post_meta( $id, 'post_opp_meta_loc', true );
+  $title = $post->post_title;
+  $url = get_permalink( $id );
+  $description = get_post_meta( $id, 'post_opp_meta_desc', true );
+
+  $type_objs = get_the_terms( $id, 'taxon_type' );
+  $time_objs = get_the_terms( $id, 'taxon_time' );
+  $loc_objs = get_the_terms( $id, 'taxon_loc' );
+
+  $data_attr = '';
+  foreach ( $type_objs as $term ) {
+    $attribute = 'data-' . $term->slug;
+    $data_attr .= esc_attr( $attribute ) . ' ';
+  }
+  foreach ( $time_objs as $term ) {
+    $attribute = 'data-' . $term->slug;
+    $data_attr .= esc_attr( $attribute ) . ' ';
+  }
+  foreach ( $loc_objs as $term ) {
+    $attribute = 'data-' . $term->slug;
+    $data_attr .= esc_attr( $attribute ) . ' ';
+  }
+
+  $markup = '';
+
+  $markup .= '<h2>' . $title . '</h2>';
+
+  if ( $description != '' ) {
+    $markup .= '<div class="desc">';
+      $markup .= '<h3>Description</h3>';
+      $markup .= $description;
+    $markup .= '</div>';
+  }
+
+  if ( count( $type_objs ) > 0 ) {
+    $markup .= '<h3>Type of activity</h3>';
+    $markup .= '<div class="tags">';
+      foreach( $type_objs as $term ) {
+        // Tag
+        $markup .= '<div class="tag">';
+          $markup .= '<p>';
+            $markup .= $term->name;
+          $markup .= '</p>';
+        $markup .= '</div>';
+      }
+    $markup .= '</div>';
+  }
+
+  echo $markup;
+}
+
+/**
  * Helper method for filter card generation
  */
 function generate_filter_card( $post ) {
@@ -201,7 +258,11 @@ function generate_filter_card( $post ) {
     $markup .= '</div>'; // End info
 
 
-    $markup .= '<h3>' . $title . '</h3>';
+    $markup .= '<h3>';
+      $markup .= '<a href="' . esc_url( $url ) . '">';
+        $markup .= $title;
+      $markup .= '</a>';
+    $markup .= '</h3>';
 
     if ( $description != '' ) {
       $markup .= '<div class="desc">';
