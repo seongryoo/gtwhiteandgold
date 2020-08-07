@@ -1,0 +1,633 @@
+/*
+Theme Name: GT White and Gold
+Author: Lalith Polepeddi
+Version: 0.1.0
+*/
+
+/* General */
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3em;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  color: #262626;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.4em;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  color: #262626;	
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  color: #262626;	
+}
+
+h4,
+h5 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25em;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  color: #262626;	
+}
+
+p {
+  color: rgba(33, 37, 41, 0.8);
+  font-size: 1.15em;
+  line-height: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  margin: 0 0 32px 0;
+  color: #262626;	
+}
+
+ul {
+	margin: 0 0 32px 0;
+	padding: 0 0 0 20px;
+}
+
+li {
+  color: rgba(33, 37, 41, 0.8);
+  font-size: 1.15em;
+  line-height: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;	
+  color: #262626;	
+}
+
+strong {
+	font-weight: 700;
+}
+
+a, a:hover, a:visited {
+  color: #262626;
+  font-weight: 700;
+  text-decoration: underline;	
+  text-decoration-color: #eeb211
+}
+
+.btn-gt,
+.featured-event .wp-block-button__link {
+  color: #262626;
+  background-color: rgba(179, 163, 105, 0.8);
+  font-weight: 700;
+  padding: 12px 20px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn-gt:hover {
+  background-color: rgba(179, 163, 105, 1.0)
+  text-decoration: none;	  
+}
+
+.reversed {
+	flex-direction: row-reverse;
+}
+
+/* Workarounds for Gutenberg */
+.container h2 {
+	margin-top: 64px;
+	border-bottom: 2px solid #B3A369;
+}
+
+.wp-block-group__inner-container {
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.wp-block-media-text {
+	grid-template-columns: none;
+}
+
+.wp-block-media-text .wp-block-media-text__media {
+	align-self: auto;
+}
+
+.wp-block-media-text>figure>img {
+  width: inherit
+}
+
+.wp-block-media-text__media {
+  text-align: center;  
+}
+
+@media (max-width: 600px) {
+	.wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
+		margin-bottom: 32px;
+	}
+}
+
+
+.section-header {
+	align-items: center;
+	border-bottom: 2px solid #B3A369;
+	display: flex;
+	justify-content: space-between;
+	margin: 64px 0 32px 0;
+}
+
+.section-header h2,
+.section-header p {
+	border-bottom: none;
+	margin: 0;
+}
+
+@media (min-width: 1200px) {
+	h1 {
+	  font-size: 4em;
+	}
+	
+	h2 {
+	  font-size: 3em;
+	}
+}
+
+/* Header */ 
+.header {
+	background-color: #B3A369;
+	padding: 8px 0;
+}
+
+.header .institute,
+.header .program {
+	display: inline-block;
+}
+
+.header .institute img {
+	width: 128px;
+}
+
+.header .program a,
+.header .program a:visited {
+	color: #262626;
+	font-family: 'Abel', sans-serif;
+	font-size: 1.6em;
+	text-decoration: none;
+	top: 6px;
+	position: relative;
+}
+
+@media (min-width: 768px) {
+	.header .institute img {
+		width: 192px;
+	}
+	
+	.header .program a,
+	.header .program a:visited {
+		font-size: 2.4em;
+	}
+}
+
+/* Nav */
+.navbar {
+	border-bottom: 1px solid #D6DBD4;
+	padding: 0;
+}
+
+.navbar-toggler {
+  padding: 0;
+  border: none;
+  outline: none;
+  margin-right: 20px;
+  margin-top: 4px;
+}
+
+.navbar-toggler-icon {
+  background-image: url(http://s3.globalchange.eas.gatech.edu/wp-content/uploads/2020/04/baseline_menu_black_48dp.png);
+}
+
+.navbar-nav li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9em;
+  font-weight: 700;
+  margin: 8px 0 0 0;
+}
+
+.navbar-nav li a,
+.navbar-nav li a:hover,
+.navbar-nav li a:visited {
+  display: inline-block;
+  width: 100%;
+  color: #262626;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-nav-container {
+  padding: 7px 15px 15px 15px;
+}
+
+.navbar .sub-menu {
+	list-style: none;
+}
+
+@media (min-width: 992px) {
+  .navbar-toggler {
+	  display: none;
+  }
+	
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-nav li {
+    margin: 0 32px 0 0;
+    position: relative;
+  }
+
+  .navbar .sub-menu {
+	border-top: 0;
+    padding: 0;
+    position: absolute;
+    left: -2px;
+    z-index: 99999;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+	
+  .navbar .sub-menu li {
+	margin-right: 0
+  }
+  
+  .navbar .sub-menu li a {
+	padding: 8px 16px;
+  }
+	
+  .navbar .sub-menu li:hover {
+	background-color: #D6DBD4;  
+  }
+	
+  ul.navbar-nav li:hover > ul, .navbar-nav ul li:hover > ul, ul.navbar-nav .focus > ul, .navbar-nav .focus > ul {
+    clip: inherit;
+    overflow: inherit;
+    height: inherit;
+    width: 196px;
+		
+	
+	border: 1px solid #D6DBD4;
+	background-color: #fff;	
+  }
+}
+
+
+/* Footer */
+.footer {
+	margin-top: 64px;
+}
+
+.footer .social {
+	border-top: 1px solid #D6DBD4;
+	padding: 16px 0;
+}
+
+.footer .social h5 {
+  display: none;
+  margin-right: 32px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 0;
+}
+
+.footer .social h5 + div {
+  display: inline-block;
+}
+
+.footer .social ul {
+  padding: 0;
+  margin: 0;
+}
+
+.footer .social li {
+  display: inline-block;
+}
+
+.footer .social li svg {
+  fill: #262626;
+  height: 28px;
+  width: 28px;
+}
+
+.footer .social li + li {
+  margin-left: 32px;
+}
+
+.footer .program-institute {
+	border-top: 1px solid #D6DBD4;
+}
+
+.footer .program {
+	padding: 16px 0;
+}
+
+.footer .institute {
+	padding-bottom: 16px;
+}
+
+.footer .institute img {
+	width: 128px;
+}
+
+@media (min-width: 768px) {
+	.footer .institute img {
+		width: 192px;
+	}
+}
+
+.footer .confit-name {
+	display: inline-block;
+	margin-bottom: 8px
+}
+
+.footer .confit-name h5 {
+	margin-bottom: 0;
+}
+
+.footer .confit-address {
+	margin-bottom: 8px;
+}
+
+.footer .confit-address,
+.footer .confit-email {
+	font-size: 0.9em;
+}
+
+.footer .confit-name,
+.footer .confit-address a,
+.footer .confit-address a:hover,
+.footer .confit-address a:visited,
+.footer .confit-email a,
+.footer .confit-email a:hover,
+.footer .confit-email a:visited {
+	text-decoration: none;
+}
+
+@media (min-width: 576px) {
+  .footer .social h5 {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 992px) {
+	.footer .program-institute .container > div {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+	}
+	
+	.footer .institute {
+		padding-top: 16px;
+		margin-right: 48px;
+	}
+}
+
+/* Banner */
+.banner {
+	padding: 160px 0;
+}
+
+.banner h1,
+.banner p {
+	color: #fff;
+}
+
+/* Hero */
+.hero  {
+	padding: 48px 0;
+}
+
+@media (min-width: 1200px) {	
+	.hero .left {
+		align-self: center;
+	}
+}
+
+/* Text card */
+.text-card {
+	border: none;
+	margin-bottom: 48px
+}
+
+.text-card .card-body {
+	padding: 0
+}
+
+/* Featured card */
+.featured-card {
+	margin-bottom: 48px;
+}
+
+.featured-card:nth-child(odd) .row {
+	flex-direction: row-reverse;
+}
+
+.featured-card + .featured-card {
+	margin-top: 48px;
+}
+
+/* Index */
+.index .our-work .card {
+	position: relative;
+	margin-bottom: 32px;
+}
+
+.index .our-work .card-img {
+    border-radius: 8px;
+}
+
+.index .our-work .card-body {
+    position: absolute;
+    padding: 32px 40px;
+}
+
+.index .our-work .card-title {
+    color: #fff;
+    font-size: 1.777em;
+    line-height: 39px;
+	margin-bottom: 16px;
+}
+
+.index .our-work p {
+    color: #fff;
+    font-size: 1.333em;
+}
+
+/* News */
+.news .row a {
+	text-decoration: none;
+}
+
+.news .card {
+	border: none;
+	margin-bottom: 32px;
+}
+
+.news .card-body {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.news .card-body time {
+	color: #a4925a;
+	display: inline-block;
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.news .card-body .card-title {
+	margin-bottom: 8px;
+}
+
+
+
+/* Events */
+.events .date-box {
+  background-color: #EDE9DB;
+  border: 2px solid #B3A369;
+  max-width: 76px;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+
+.events .date-box h3, 
+.events .date-box h5 {
+  color: #262626;
+  text-align: center;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  text-transform: uppercase;
+}
+
+.events .date-box h3 {
+  font-size: 2.369em;
+  font-weight: 400;
+  margin-top: 8px;
+  line-height: 36px;
+}
+
+.events .date-box h5 {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.events .card-body {
+  padding: 0;
+}
+
+.events .card-title {
+  margin-bottom: 8px;
+}
+
+.events .card-title a,
+.events .card-title a:hover {
+  color: #262626;
+  text-decoration: none;
+}
+
+.events .events-list p {
+  color: #262626;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+  line-height: 24px;	
+}
+
+.events .event-time,
+.events .event-location {
+  font-weight: 700
+}
+
+.events .row {
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .events .col-md-1 {
+    flex: 0 0 15%;
+    max-width: 15%;
+  }
+
+  .events .date-box  {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .events .col-md-1 {
+    flex: 0 0 8.333333%;
+    max-width: 8.333333%;
+  }
+}
+
+/*Featured event*/
+.featured-event h1 + p {
+	font-size: 1.6em;
+}
+
+.featured-event h4,
+.featured-event h4 + p {
+    margin-bottom: 8px;
+}
+
+.featured-event h4 + p + h4,
+.featured-event ol + h4,
+.featured-event ul + h4{
+    margin-top: 32px;
+}
+
+.featured-event h5 {
+	font-weight: 400;
+	margin-bottom: 8px;
+}
+
+.featured-event thead tr th:first-child,
+.featured-event tbody tr td:first-child {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  word-break: break-all;
+}
+
+.featured-event .wp-block-table {
+	margin-bottom: 48px;
+}
+
+/* About */
+.about h3,
+.about h4,
+.about h5 {
+	margin-bottom: 8px;
+}
+
+.about h5 {
+	font-weight: 400;
+}
+
+
+/*Post*/
+@media (min-width: 992px) {
+  .post .container {
+    max-width: 800px;
+  }
+}

@@ -1,0 +1,249 @@
+/* Debug styling */
+
+.cards {
+/*  border: 2px solid red;*/
+}
+
+.card {
+/*  border: 2px solid green;*/
+}
+
+.filter-controls {
+/*  border: 2px solid blue;*/
+}
+
+
+/* Tabula rasa */
+
+p {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+
+/* Actual styling */
+
+.filter-controls {
+/*  padding: 1em;*/
+  padding: 0;
+}
+
+
+.info {
+/*  border: 2px solid red;*/
+  margin-bottom: 1em;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+.filter-set h4 {
+  margin-bottom: 0;
+}
+.filter-set label {
+  margin-bottom: 0.25em;
+}
+
+.filter-set {
+  margin-bottom: 1em;
+}
+
+p.desc {
+  margin-bottom: 1em;
+}
+
+.info p {
+  opacity: 0.7;
+}
+
+.tags {
+/*  border: 2px solid green;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 0.5em 1.5em;
+  background: #f0e5c2;
+  border-radius: 2em;
+  margin: 0 1em 0.5em 0;
+}
+
+.filter-set .filter-pair {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align:center;
+  -ms-flex-align:center;
+  align-items:center;
+  
+  padding: 0.5em 1em;
+  margin-bottom: 0.5em;
+}
+
+
+
+.input-pair label {
+  margin-bottom: 0;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+.filter-set label {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+/*  border: 2px solid red;*/
+}
+
+.filter-pair {
+  margin: 0 1em;
+}
+.abierto .filter-pair {
+  background: #eaeaea;
+}
+
+.cerrado .filter-pair{
+/*  background: #eaeaea;*/
+}
+
+.filter-set .filter-pair h3 {
+/*  border: 2px solid green;*/
+  margin-bottom: 0;
+}
+.filter-set .filter-pair i {
+/*  border: 2px solid green;*/
+  font-size: 1.5em;
+}
+
+.filter-set form {
+  margin-left: 1.333em;
+}
+
+.filter-set.cerrado form {
+  display: none;
+}
+
+.title-pair {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  
+  align-items: center;
+  
+  margin-bottom: 1rem;
+  padding: 1em 0 0 1em;
+  padding-top: 0;
+}
+
+.title-pair i {
+  font-size: 1.2em;
+  margin-right: 0.5rem;
+}
+
+form {
+  padding: 0 1em;
+}
+
+.title-pair h3 {
+  margin-bottom: 0;
+}
+
+/*Checkboxing*/
+
+.input-pair {
+  
+  margin-bottom: 0.5em;
+
+}
+.input-pair label {
+  font-size: 1.15em;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #262626;   
+  
+  position: relative;
+  
+  margin-left: 1em;
+}
+
+
+
+.input-pair input[type="checkbox"] ~ label .check {
+  content: '';
+  width: 1em;
+  height: 1em;
+  border-radius: 0.1em;
+  background: none;
+  border: 2px solid #aaaaaa;
+  position: absolute;
+  top: 0.25em;
+  left: -1.333em;
+}
+
+.input-pair input[type="checkbox"]:checked ~ label .check {
+  background: #B3A369;
+  border: none;
+}
+
+.input-pair input[type="checkbox"]:checked ~ label .check:after {
+  content: '';
+  width: 0.35em;
+  height: 0.15em;
+  background: white;
+  position: absolute;
+  top: 0.6em;
+  left: 0.08em;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.input-pair input[type="checkbox"]:checked ~ label .check:before {
+  content: '';
+  width: 0.8em;
+  height: 0.15em;
+  background: white;
+  position: absolute;
+  top: 0.45em;
+  right: 0.02em;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.cards {
+  margin-left: 1em;
+}
+
+.card {
+  border: 1px solid #bfbfbf;
+  padding: 1.5em;
+  margin-bottom: 2em;
+/*  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);*/
+/*  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);*/
+}
+
+.tag .fa {
+  margin-right: 0.333em;
+}
