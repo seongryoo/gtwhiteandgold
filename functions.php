@@ -71,7 +71,7 @@ function gtwhiteandgold_scripts_styles() {
 
   if ( is_page( 'get-involved' ) ) {
     $uri = get_template_directory_uri() . '/css/filter.css';
-    echo '<script>console.log("' . $uri . '")</script>';
+    wp_enqueue_style( 'gtwhiteandgold-filter', $uri );
   }
   if ( is_singular( 'post_opp' ) ) {
     $uri = get_template_directory_uri() . '/css/opp.css';
