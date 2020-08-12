@@ -1,84 +1,84 @@
 .visually-hidden {
-    position: absolute !important;
-    height: 1px; 
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap; /* added line */
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
 }
 
 .opp-post h2 {
-    border-bottom: none;
-    margin: 24px 0;
+  border-bottom: none;
+  margin: 24px 0;
 }
 
 .opp-post a.back-link {
-    display: inline-block;
-    margin-top: 48px;
+  display: inline-block;
+  margin-top: 48px;
 }
 
 .opp-post a.back-link .fa {
-    margin-right: 0.333em;
+  margin-right: 0.333em;
 }
 
 .opp-post h3 {
-    font-weight: 600;
-    margin-bottom: 0.5em;
-    position: relative;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  position: relative;
 }
 
 .opp-post p {
-    margin-bottom: 0;
-    color: #333;
+  margin-bottom: 0;
+  color: #333;
 }
 
 .opp-post .opp-section {
-    margin-bottom: 3em;
+  margin-bottom: 3em;
 }
 
 .opp-post .tag p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .opp-post .tag .fa {
-    margin-right: 0.333em;
+  margin-right: 0.333em;
 }
 
 .opp-post h3 .fa {
-    position: absolute;
-    left: -2rem;
-    color: #BFC2BD;
+  position: absolute;
+  left: -2rem;
+  color: #BFC2BD;
 }
 @media screen and (max-width: 40em) {
-    .opp-post h3 .fa {
-        display: none;
-    }
+  .opp-post h3 .fa {
+    display: none;
+  }
 }
 
 .opp-post h3 .fa-map-marker {
-    font-size: 1.1em;
+  font-size: 1.1em;
 }
 .opp-post h3 .fa-hourglass-end {
-    font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 .opp-post .tag {
-    background: #eaeaea;
+  background: #eaeaea;
 }
 
 .tags {
-    /*  border: 2px solid green;*/
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+  /*  border: 2px solid green;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .tag {
-    padding: 0.5em 1.5em;
-    background: #f0e5c2;
-    border-radius: 2em;
-    margin: 0 1em 0.5em 0;
+  padding: 0.5em 1.5em;
+  background: #f0e5c2;
+  border-radius: 2em;
+  margin: 0 1em 0.5em 0;
 }

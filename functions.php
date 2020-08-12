@@ -70,25 +70,27 @@ function gtwhiteandgold_scripts_styles() {
   wp_enqueue_style( 'gtwhiteandgold-style', get_stylesheet_uri() );
 
   if ( is_page( 'get-involved' ) ) {
-    $uri = get_template_directory_uri() . '/css/filter.css';
-    wp_enqueue_style( 'gtwhiteandgold-filter', $uri );
+    $base = get_template_directory_uri();
+
+    $style_uri = $base . '/css/filter.css';
+    wp_enqueue_style( 'gtwhiteandgold-filter', $style_uri );
+
+    $strudel_uri = $base . '/js/strudel.js';
+    wp_enqueue_script( 'gbcp-strudel', $strudel_uri );
+
+    $script_uri = $base . '/js/filter.js';
+    $deps = array(
+      'gbcp-strudel',
+    );
+    wp_enqueue_script( 'gtwhiteandgold-filter-script', $script_uri, $deps );
   }
   if ( is_singular( 'post_opp' ) ) {
     $uri = get_template_directory_uri() . '/css/opp.css';
     wp_enqueue_style( 'gtwhiteandgold-opp', $uri );
   }
+
   // Loads fontawesome icons
   wp_enqueue_style( 'gtwhiteandgold-fontawesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
-
-  // Loads additional stylesheets
-  $stylesheets = array(
-
-  );
-  foreach ( $stylesheets as $slug ) {
-    $style_name = 'gtwhiteandgold-' . $slug;
-    $style_uri = get_template_directory_uri() . '/css/' . $slug . '.css';
-    wp_enqueue_style( $style_name, $style_uri );
-  }
 
 }
 add_action( 'wp_enqueue_scripts', 'gtwhiteandgold_scripts_styles' );
