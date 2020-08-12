@@ -1,0 +1,58 @@
+
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+.opp-post h2 {
+    border-bottom: none;
+}
+
+.opp-post h3 {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.opp-post p {
+    margin-bottom: 0;
+    color: #333;
+}
+
+.opp-post .opp-section {
+  margin-bottom: 2em;
+}
+
+.opp-post .tag p {
+    margin-bottom: 0;
+}
+
+.opp-post .tag .fa {
+  margin-right: 0.333em;
+}
+
+
+.opp-post .tag {
+  background: #eaeaea;
+}
+
+.tags {
+/*  border: 2px solid green;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 0.5em 1.5em;
+  background: #f0e5c2;
+  border-radius: 2em;
+  margin: 0 1em 0.5em 0;
+}

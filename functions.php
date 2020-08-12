@@ -69,15 +69,27 @@ function gtwhiteandgold_scripts_styles() {
   // Loads our main stylesheet.
   wp_enqueue_style( 'gtwhiteandgold-style', get_stylesheet_uri() );
 
+  if ( is_page( 'get-involved' ) ) {
+    $uri = get_template_directory_uri() . '/css/filter.css';
+    echo '<script>console.log("' . $uri . '")</script>';
+  }
+  if ( is_singular( 'post_opp' ) ) {
+    $uri = get_template_directory_uri() . '/css/opp.css';
+    wp_enqueue_style( 'gtwhiteandgold-opp', $uri );
+  }
+  // Loads fontawesome icons
+  wp_enqueue_style( 'gtwhiteandgold-fontawesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );
+
   // Loads additional stylesheets
   $stylesheets = array(
-    'filter',
+
   );
   foreach ( $stylesheets as $slug ) {
     $style_name = 'gtwhiteandgold-' . $slug;
     $style_uri = get_template_directory_uri() . '/css/' . $slug . '.css';
     wp_enqueue_style( $style_name, $style_uri );
   }
+
 }
 add_action( 'wp_enqueue_scripts', 'gtwhiteandgold_scripts_styles' );
 
@@ -184,30 +196,63 @@ function generate_opportunity( $post ) {
 
   $markup = '';
 
-  $markup .= '<h2>' . $title . '</h2>';
+  $markup .= '<div class="opp-post single-post">';
 
-  if ( $description != '' ) {
-    $markup .= '<div class="desc">';
-      $markup .= '<h3>Description</h3>';
-      $markup .= $description;
-    $markup .= '</div>';
-  }
+    $markup .= '<h2>' . $title . '</h2>';
 
-  if ( count( $type_objs ) > 0 ) {
-    $markup .= '<h3>Type of activity</h3>';
-    $markup .= '<div class="tags">';
+    if ( count( $type_objs ) > 0 ) {
+      $markup .= '<div class="opp-tags opp-section">';
+        $markup .= '<h3 class="visually-hidden">Type of activity</h3>';
+        $markup .= draw_opp_tags( $type_objs );
+      $markup .= '</div>';
+    }
+
+    if ( $description != '' ) {
+      $markup .= '<div class="opp-desc opp-section">';
+        $markup .= '<h3>Description</h3>';
+        $markup .= $description;
+      $markup .= '</div>';
+    }
+
+
+
+  $markup .= '</div>';
+
+  echo $markup;
+}
+
+function draw_opp_tags( $type_objs ) {
+  $markup = '';
+  $markup .= '<div class="tags">';
       foreach( $type_objs as $term ) {
+        $icon = '';
+        $slug = $term->slug;
+        $slugs_to_icons = array(
+          'type-aca'          => 'fa-book',
+          'type-vol'          => 'fa-heart',
+          'type-rec'          => 'fa-bicycle',
+          'type-eve'          => 'fa-calendar',
+          'type-com'          => 'fa-home',
+          'type-lea'          => 'fa-users',
+        );
+        foreach( $slugs_to_icons as $key=>$value ) {
+          if ( $slug == $key ) {
+            $icon = $value;
+          }
+        }
         // Tag
         $markup .= '<div class="tag">';
           $markup .= '<p>';
+            if ( $icon != '' ) {
+              $markup .= '<i class="fa ' . $icon . '" aria-hidden="true"></i>';
+            }
             $markup .= $term->name;
           $markup .= '</p>';
         $markup .= '</div>';
       }
-    $markup .= '</div>';
-  }
+  $markup .= '</div>'; // End tags
 
-  echo $markup;
+  return $markup;
 }
 
 /**
@@ -258,31 +303,19 @@ function generate_filter_card( $post ) {
     $markup .= '</div>'; // End info
 
 
-    $markup .= '<h3>';
+    $markup .= '<h3 class="opp-title">';
       $markup .= '<a href="' . esc_url( $url ) . '">';
         $markup .= $title;
       $markup .= '</a>';
     $markup .= '</h3>';
 
     if ( $description != '' ) {
-      $markup .= '<div class="desc">';
+      $markup .= '<div class="opp-desc">';
         $markup .= $description;
       $markup .= '</div>';
     }
 
-
-    $markup .= '<div class="tags">';
-      foreach( $type_objs as $term ) {
-        $icon = 'fa-book';
-        // Tag
-        $markup .= '<div class="tag">';
-          $markup .= '<p>';
-            $markup .= '<i class="fa ' . $icon . '"></i>';
-            $markup .= $term->name;
-          $markup .= '</p>';
-        $markup .= '</div>';
-      }
-    $markup .= '</div>'; // End tags
+    $markup .= draw_opp_tags( $type_objs );
 
 
   $markup .= '</div>';
