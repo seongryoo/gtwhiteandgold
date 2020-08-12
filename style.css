@@ -79,6 +79,10 @@ a, a:hover, a:visited {
   text-decoration-color: #eeb211
 }
 
+.jetpack-social-widget-item a {
+  display: block;
+}
+
 .content a {
   text-decoration: none;
   border-bottom: 1px solid #eeb211;
@@ -92,8 +96,19 @@ a, a:hover, a:visited {
   outline: none;
 }
 
+.header a,
+.header button {
+  display: inline-block;
+  position: relative;
+}
+
 *:focus {
   outline: 3px solid #eeb211;
+}
+
+.header a:focus,
+.header button:focus {
+  outline: 3px solid white;
 }
 
 .btn-gt,
