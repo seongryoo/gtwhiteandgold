@@ -214,7 +214,37 @@ function generate_opportunity( $post ) {
       $markup .= '</div>';
     }
 
+    $location_icon = '<i class="fa fa-map-marker" aria-hidden="true"></i>';
+    if ( $location_desc != '' ) {
+      $markup .= '<div class="opp-loc opp-section">';
+        $markup .= '<h3>' . $location_icon . 'Location</h3>';
+        $markup .= '<p>' .  $location_desc . '</p>';
+      $markup .= '</div>';
+    } else if ( count( $loc_objs ) > 0 ) {
+      $markup .= '<div class="opp-loc opp-section">';
+        $markup .= '<h3>' . $location_icon . 'Location</h3>';
+        foreach ( $loc_objs as $loc ) {
+          $name = $loc->name;
+          $markup .= '<p>'. $name . '</p>';
+        }
+      $markup .= '</div>';
+    }
 
+    $duration_icon = '<i class="fa fa-hourglass-end" aria-hidden="true"></i>';
+    if ( $duration_desc != '' ) {
+      $markup .= '<div class="opp-dur opp-section">';
+        $markup .= '<h3>' . $duration_icon . 'Time commitment</h3>';
+        $markup .= '<p>' . $duration_desc . '</p>';
+      $markup .= '</div>';
+    } else if ( count( $time_objs ) > 0 ) {
+      $markup .= '<div class="opp-dur opp-section">';
+        $markup .= '<h3>' . $duration_icon . 'Time commitment</h3>';
+        foreach ( $time_objs as $time ) {
+          $name = $time->name;
+          $markup .= '<p>' . $name . '</p>';
+        }
+      $markup .= '</div>';
+    }
 
   $markup .= '</div>';
 
