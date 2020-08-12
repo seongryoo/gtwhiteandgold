@@ -205,6 +205,13 @@ function generate_opportunity( $post ) {
 
   $markup .= '<div class="opp-post single-post">';
 
+    $markup .= '<a href="/get-involved" class="back-link">';
+      $markup .= '<p>';
+        $markup .= '<i class="fa fa-angle-left"></i>';
+        $markup .= 'See all opportunities';
+      $markup .= '</p>';
+    $markup .= '</a>';
+
     $markup .= '<h2>' . $title . '</h2>';
 
     if ( $type_objs != false ) {

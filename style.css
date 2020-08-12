@@ -79,6 +79,23 @@ a, a:hover, a:visited {
   text-decoration-color: #eeb211
 }
 
+.content a {
+  text-decoration: none;
+  border-bottom: 1px solid #eeb211;
+}
+
+.content a:hover, 
+.content a:focus {
+  border-bottom: 4px solid #eeb211;
+  margin-bottom: -3px;
+  background: #eae7e0;
+  outline: none;
+}
+
+*:focus {
+  outline: 3px solid #eeb211;
+}
+
 .btn-gt,
 .featured-event .wp-block-button__link {
   color: #262626;
