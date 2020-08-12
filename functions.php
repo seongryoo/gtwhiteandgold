@@ -181,18 +181,25 @@ function generate_opportunity( $post ) {
   $loc_objs = get_the_terms( $id, 'taxon_loc' );
 
   $data_attr = '';
-  foreach ( $type_objs as $term ) {
-    $attribute = 'data-' . $term->slug;
-    $data_attr .= esc_attr( $attribute ) . ' ';
+  if ( $type_objs != false ) {
+    foreach ( $type_objs as $term ) {
+      $attribute = 'data-' . $term->slug;
+      $data_attr .= esc_attr( $attribute ) . ' ';
+    }
   }
-  foreach ( $time_objs as $term ) {
-    $attribute = 'data-' . $term->slug;
-    $data_attr .= esc_attr( $attribute ) . ' ';
+  if ( $time_objs != false ) {
+    foreach ( $time_objs as $term ) {
+      $attribute = 'data-' . $term->slug;
+      $data_attr .= esc_attr( $attribute ) . ' ';
+    }
   }
-  foreach ( $loc_objs as $term ) {
-    $attribute = 'data-' . $term->slug;
-    $data_attr .= esc_attr( $attribute ) . ' ';
+  if ( $loc_objs != false ) {
+    foreach ( $loc_objs as $term ) {
+      $attribute = 'data-' . $term->slug;
+      $data_attr .= esc_attr( $attribute ) . ' ';
+    }
   }
+  
 
   $markup = '';
 
@@ -200,7 +207,7 @@ function generate_opportunity( $post ) {
 
     $markup .= '<h2>' . $title . '</h2>';
 
-    if ( count( $type_objs ) > 0 ) {
+    if ( $type_objs != false ) {
       $markup .= '<div class="opp-tags opp-section">';
         $markup .= '<h3 class="visually-hidden">Type of activity</h3>';
         $markup .= draw_opp_tags( $type_objs );
@@ -220,7 +227,7 @@ function generate_opportunity( $post ) {
         $markup .= '<h3>' . $location_icon . 'Location</h3>';
         $markup .= '<p>' .  $location_desc . '</p>';
       $markup .= '</div>';
-    } else if ( count( $loc_objs ) > 0 ) {
+    } else if ( $loc_objs != false ) {
       $markup .= '<div class="opp-loc opp-section">';
         $markup .= '<h3>' . $location_icon . 'Location</h3>';
         foreach ( $loc_objs as $loc ) {
@@ -236,7 +243,7 @@ function generate_opportunity( $post ) {
         $markup .= '<h3>' . $duration_icon . 'Time commitment</h3>';
         $markup .= '<p>' . $duration_desc . '</p>';
       $markup .= '</div>';
-    } else if ( count( $time_objs ) > 0 ) {
+    } else if ( $time_objs != false ) {
       $markup .= '<div class="opp-dur opp-section">';
         $markup .= '<h3>' . $duration_icon . 'Time commitment</h3>';
         foreach ( $time_objs as $time ) {
@@ -252,6 +259,9 @@ function generate_opportunity( $post ) {
 }
 
 function draw_opp_tags( $type_objs ) {
+  if ( $type_objs == false ) {
+    return '';
+  }
   $markup = '';
   $markup .= '<div class="tags">';
       foreach( $type_objs as $term ) {
@@ -301,17 +311,23 @@ function generate_filter_card( $post ) {
   $loc_objs = get_the_terms( $id, 'taxon_loc' );
 
   $data_attr = '';
-  foreach ( $type_objs as $term ) {
-    $attribute = 'data-' . $term->slug;
-    $data_attr .= esc_attr( $attribute ) . ' ';
+  if ( $type_objs != false ) {
+    foreach ( $type_objs as $term ) {
+      $attribute = 'data-' . $term->slug;
+      $data_attr .= esc_attr( $attribute ) . ' ';
+    }
   }
-  foreach ( $time_objs as $term ) {
-    $attribute = 'data-' . $term->slug;
-    $data_attr .= esc_attr( $attribute ) . ' ';
+  if ( $time_objs != false ) {
+    foreach ( $time_objs as $term ) {
+      $attribute = 'data-' . $term->slug;
+      $data_attr .= esc_attr( $attribute ) . ' ';
+    }
   }
-  foreach ( $loc_objs as $term ) {
-    $attribute = 'data-' . $term->slug;
-    $data_attr .= esc_attr( $attribute ) . ' ';
+  if ( $loc_objs != false ) {
+    foreach ( $loc_objs as $term ) {
+      $attribute = 'data-' . $term->slug;
+      $data_attr .= esc_attr( $attribute ) . ' ';
+    }
   }
 
   $markup = '';
@@ -345,7 +361,9 @@ function generate_filter_card( $post ) {
       $markup .= '</div>';
     }
 
-    $markup .= draw_opp_tags( $type_objs );
+    if ( $type_objs != false ) {
+      $markup .= draw_opp_tags( $type_objs );
+    }
 
 
   $markup .= '</div>';
