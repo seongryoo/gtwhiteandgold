@@ -29,12 +29,15 @@
 }
 
 .opp-post p {
-  margin-bottom: 0;
   color: #333;
 }
 
 .opp-post .opp-section {
   margin-bottom: 3em;
+}
+
+.opp-post .back-link p {
+  margin-bottom: 0;
 }
 
 .opp-post .tag p {

@@ -22,6 +22,8 @@
  * @package GT_White_and_Gold
  */
 
+include get_template_directory() . '/helper-methods/truncate.php';
+
 function gtwhiteandgold_setup() {
   // Load regular editor styles into the new block-based editor.
   add_theme_support( 'editor-styles' );
@@ -346,19 +348,21 @@ function generate_filter_card( $post ) {
   $markup .= '<div class="card" ' . $data_attr . '>';
 
 
+  if ( $duration_desc != '' || $location_desc != '' ) {
     $markup .= '<div class="info">';
-      if ( $duration_desc != '' ) {
-        $markup .= '<div class="duration">';
-          $markup .= '<p>' . $duration_desc . '</p>';
-        $markup .= '</div>';
-      }
+    if ( $duration_desc != '' ) {
+      $markup .= '<div class="duration">';
+        $markup .= '<p>' . $duration_desc . '</p>';
+      $markup .= '</div>';
+    }
 
-      if ( $location_desc != '' ) {
-        $markup .= '<div class="location">';
-          $markup .= '<p>' . $location_desc . '</p>';
-        $markup .= '</div>';
-      }
+    if ( $location_desc != '' ) {
+      $markup .= '<div class="location">';
+        $markup .= '<p>' . $location_desc . '</p>';
+      $markup .= '</div>';
+    }
     $markup .= '</div>'; // End info
+  }
 
 
     $markup .= '<h3 class="opp-title">';
@@ -367,9 +371,11 @@ function generate_filter_card( $post ) {
       $markup .= '</a>';
     $markup .= '</h3>';
 
+    $truncated_desc = truncate( $description, 200 );
+
     if ( $description != '' ) {
       $markup .= '<div class="opp-desc">';
-        $markup .= $description;
+        $markup .= $truncated_desc;
       $markup .= '</div>';
     }
 

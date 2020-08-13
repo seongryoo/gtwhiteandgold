@@ -1,8 +1,5 @@
 (function(strudel) {
-  console.log(strudel);
-
-  strudel.clickPress('.filter-check', function(event) {
-    const checkbox = event.target;
-    checkbox.click();
+  strudel.listen('.filter-check', 'enter', function(event) {
+    event.target.click();
   });
 })(window.strudel);

@@ -26,17 +26,13 @@ function Strudel() {
     return getComputedStyle(element)[style] == value;
   };
 
-  this.clickPress = function(selector, callback) {
+
+  this.pressEnter = function(selector, callback) {
     const theFunction = function(selector, callback) {
       const elements = document.querySelectorAll(selector);
       for (let i = 0; i < elements.length; i++) {
         const element = elements[i];
-        element.addEventListener('click', callback);
         element.addEventListener('keydown', function(event) {
-          if (event.key == ' ' || event.key == 'Spacebar') {
-            event.preventDefault();
-            callback(event);
-          }
           if (event.key == 'Enter') {
             callback(event);
           }
@@ -45,6 +41,34 @@ function Strudel() {
     };
     window.addEventListener('DOMContentLoaded', function(event) {
       theFunction(selector, callback);
+    });
+  };
+
+  this.listen = function(selector, listenType, callback) {
+    const theFunction = function(selector, listenType, callback) {
+      const elements = document.querySelectorAll(selector);
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        if (listenType == 'click') {
+          element.addEventListener('click', callback);
+        } else if (listenType == 'enter') {
+          element.addEventListener('keydown', function(event) {
+            if (event.key == 'Enter') {
+              callback(event);
+            }
+          });
+        } else if (listenType == 'space') {
+          element.addEventListener('keydown', function(event) {
+            if (event.key == ' ' || event.key == 'Spacebar') {
+              event.preventDefault();
+              callback(event);
+            }
+          });
+        }
+      }
+    };
+    window.addEventListener('DOMContentLoaded', function(event) {
+      theFunction(selector, listenType, callback);
     });
   };
 }
