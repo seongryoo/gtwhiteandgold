@@ -27,20 +27,25 @@ function Strudel() {
   };
 
   this.clickPress = function(selector, callback) {
-    const elements = document.querySelectorAll(selector);
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i];
-      element.addEventListener('click', callback);
-      element.addEventListener('keydown', function(event) {
-        if (event.key == ' ' || event.key == 'Spacebar') {
-          event.preventDefault();
-          callback();
-        }
-        if (event.key == 'Enter') {
-          callback();
-        }
-      });
-    }
+    const theFunction = function(selector, callback) {
+      const elements = document.querySelectorAll(selector);
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        element.addEventListener('click', callback);
+        element.addEventListener('keydown', function(event) {
+          if (event.key == ' ' || event.key == 'Spacebar') {
+            event.preventDefault();
+            callback(event);
+          }
+          if (event.key == 'Enter') {
+            callback(event);
+          }
+        });
+      }
+    };
+    window.addEventListener('DOMContentLoaded', function(event) {
+      theFunction(selector, callback);
+    });
   };
 }
 

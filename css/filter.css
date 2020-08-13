@@ -210,9 +210,21 @@ form {
   left: -1.333em;
 }
 
+.input-pair input[type="checkbox"]:focus ~ label .check .check-focus {
+  background: #D7BD61;
+  opacity: 0.5;
+  border-radius: 1em;
+  width: 2em;
+  height: 2em;
+  left: -0.575em;
+  top: -0.575em;
+  z-index: -1;
+  position: absolute;
+}
+
 .input-pair input[type="checkbox"]:checked ~ label .check {
   background: #B3A369;
-  border: none;
+  border: 2px solid #aaaaaa;
 }
 
 .input-pair input[type="checkbox"]:checked ~ label .check:after {
@@ -221,20 +233,19 @@ form {
   height: 0.15em;
   background: white;
   position: absolute;
-  top: 0.6em;
-  left: 0.08em;
+  top: 0.5em;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
 .input-pair input[type="checkbox"]:checked ~ label .check:before {
   content: '';
-  width: 0.8em;
+  width: 0.7em;
   height: 0.15em;
   background: white;
   position: absolute;
-  top: 0.45em;
-  right: 0.02em;
+  top: 0.375em;
+  left: 0.15em;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }

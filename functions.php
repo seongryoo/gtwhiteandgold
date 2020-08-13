@@ -159,9 +159,12 @@ function generate_tags( $taxonomy ) {
     $attribute = 'data-' . $term->slug;
     $markup = '';
     $markup .= '<div class="input-pair">';
-      $markup .= '<input type="checkbox" class="visually-hidden" id="' . $term_slug . '" ';
+      $markup .= '<input type="checkbox" class="visually-hidden filter-check" id="' . $term_slug . '" ';
       $markup .= 'data-acts-on="' . $attribute . '">';
-      $markup .= '<label for="' . $term_slug . '"><span class="check"></span>' . $term_name . '</label>';
+      $markup .= '<label for="' . $term_slug . '">';
+        $markup .= '<span class="check"><div class="check-focus"></div></span>';
+        $markup .=  $term_name;
+      $markup .= '</label>';
     $markup .= '</div>';
     echo $markup;
   }
