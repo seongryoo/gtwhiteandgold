@@ -36,5 +36,45 @@
           .set('aria-expanded', false)
           .set('aria-label', 'Expand activity type filters');
     }
+
+    const forms = document.querySelectorAll('.filter-set form');
+    const cards = document.querySelectorAll('.pile .card');
+
+    const showAllWith = function(attribute) {
+      for (const card of cards) {
+        if (card.hasAttribute(attribute)) {
+          card.classList.remove('hidden-card');
+        }
+      }
+    };
+    const hideAllWith = function(attribute) {
+      for (const card of cards) {
+        if (card.hasAttribute(attribute)) {
+          card.classList.add('hidden-card');
+        }
+      }
+    };
+
+    for (const form of forms) {
+      form.addEventListener('change', function(event) {
+        const checkboxes = form.elements;
+        let countChecked = 0;
+        for (const checkbox of checkboxes) {
+          const attrs = checkbox.attributes;
+          const actsOn = attrs['data-acts-on'].value;
+          hideAllWith(actsOn);
+          if (checkbox.checked) {
+            countChecked++;
+          }
+        }
+        for (const checkbox of checkboxes) {
+          const attrs = checkbox.attributes;
+          const actsOn = attrs['data-acts-on'].value;
+          if (checkbox.checked || countChecked == 0) {
+            showAllWith(actsOn);
+          }
+        }
+      });
+    }
   });
 })(window.strudel);
