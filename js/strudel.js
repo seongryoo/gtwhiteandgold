@@ -2,6 +2,10 @@
  * Strudel object
  */
 function Strudel() {
+  this.onLoad = function(callback) {
+    window.addEventListener('DOMContentLoaded', callback);
+  };
+
   this.query = function(conditionFunction) {
     return new StrudelQuery(conditionFunction);
   };
@@ -44,22 +48,27 @@ function Strudel() {
     });
   };
 
+  this.clickPress = function(selector, callback) {
+    this.listen(selector, 'all', callback);
+  };
+
   this.listen = function(selector, listenType, callback) {
     const theFunction = function(selector, listenType, callback) {
       const elements = document.querySelectorAll(selector);
       for (let i = 0; i < elements.length; i++) {
         const element = elements[i];
-        if (listenType == 'click') {
+        if (listenType == 'click' || listenType == 'all') {
           element.addEventListener('click', callback);
-        } else if (listenType == 'enter') {
+        }
+        if (listenType == 'enter' ||
+          listenType == 'space' ||
+          listenType == 'all') {
           element.addEventListener('keydown', function(event) {
-            if (event.key == 'Enter') {
+            if (listenType == 'enter' && event.key == 'Enter') {
               callback(event);
             }
-          });
-        } else if (listenType == 'space') {
-          element.addEventListener('keydown', function(event) {
-            if (event.key == ' ' || event.key == 'Spacebar') {
+            if (listenType == 'space' &&
+              (event.key == 'Spacebar' || event.key == ' ')) {
               event.preventDefault();
               callback(event);
             }
