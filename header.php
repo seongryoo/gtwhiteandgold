@@ -16,7 +16,7 @@
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Abel&family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
 </head>
 
@@ -27,54 +27,25 @@
 			<a href="#content">Skip to main content</a>
 		</div>
 		<div class="header">
-			<!-- Top Header -->
-			<div id="top-header" class="top-background-wrapper">
-
-				<div class="container">
-					<div class="row stripes justify-content-between">
-						<div class="col-5 col-sm-4 col-md-3 p-0 d-flex flex-row top-angle-wrapper">
-							<div class="top-background"></div>
-							<div class="top-background-angle"></div>
-						</div>
-						<div class="col p-0 d-flex flex-row ctn-background">
-							<div class="ctn-angle d-none d-lg-block"></div>
-							<!--  CTN Logo -->
-							<div class="ctn d-none d-lg-block">
-								<a href="https://www.gatech.edu/about/creating-next" title="">
-									<img src="<?php bloginfo( 'template_url' ); ?>/images/creating_the_next.svg"
-									style="max-height:1rem" alt="Creating the Next"/>
-								</a>
-							</div>
-						</div>
-					</div>
+			<div class="container row">
+				<div class="institute gt-logo-wrapper">
+					<a href="https://www.gatech.edu/" aria-label="noopener" target="_blank" style="display:block">
+						<?php
+							$logo_url = get_template_directory_uri() . "/images/logo_white.png";
+							echo '<img class="img-fluid gt-logo" src="' . esc_url($logo_url) . '" alt="Georgia Tech">';
+						?>
+					</a>
 				</div>
+				<div class="col program">
+					<a href="<?php bloginfo('url') ?>">
+						<?php bloginfo('name') ?>
+					</a>
+				</div>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 			</div>
 
-			<div class="bottom-header bottom-background-wrapper">
-				<div class="container row">
-					<div class="institute col-5 col-sm-4 col-md-3 p-0 d-flex flex-row gt-logo-wrapper justify-content-between">
-						<a href="https://www.gatech.edu/" aria-label="noopener" target="_blank" style="display:block">
-							<?php
-							$custom_logo_id = get_theme_mod( 'custom_logo' );
-							$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-							if (has_custom_logo()) {
-								echo '<img class="img-fluid gt-logo" src="' . esc_url($logo[0]) . '" alt="Georgia Tech">';
-							}
-							?>
-						</a>
-						<div class="gt-logo-angle"></div>
-					</div>
-					<div class="col program">
-						<a href="<?php bloginfo('url') ?>">
-							<?php bloginfo('name') ?>
-						</a>
-					</div>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-				</div>
-
-			</div>
 		</div>
 
 		<nav aria-label="Main" class="navbar navbar-expand-lg navbar-light">

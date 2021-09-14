@@ -28,11 +28,8 @@
 				  <div class="institute">
 					  <a href="https://www.gatech.edu/" aria-label="noopener" target="_blank">
 						<?php
-						$custom_logo_id = get_theme_mod( 'custom_logo' );
-						$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-						if (has_custom_logo()) {
-						  echo '<img class="img-fluid" src="' . esc_url($logo[0]) . '" alt="Georgia Tech">';
-						}
+							$logo_url = get_template_directory_uri() . "/images/logo_black.png";
+							echo '<img class="img-fluid gt-logo" src="' . esc_url($logo_url) . '" alt="Georgia Tech">';
 						?>
 					  </a>
 				  </div>
