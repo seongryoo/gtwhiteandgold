@@ -15,7 +15,7 @@ date_default_timezone_set("America/New_York");
 
 $nodes = simplexml_load_file("http://hg.gatech.edu/node/635185/xml");
 ?>
-<div class="events">
+<main class="events" id="content" role="main">
 	<div class="container">
 		<h2><?php the_title(); ?></h2>
 		
@@ -60,5 +60,5 @@ $nodes = simplexml_load_file("http://hg.gatech.edu/node/635185/xml");
 		?>
 		<p><a class="btn btn-gt" href="/events/">See upcoming events</a></p>
 	</div>
-</div>
+</main>
 <?php get_footer(); ?>

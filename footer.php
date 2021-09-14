@@ -10,12 +10,12 @@
  */
 
 ?>
-    <div class="footer">
+    <footer class="footer">
       <div class="social" id="social">
-        <div class="container">
+        <nav aria-label="Social media links" class="container">
           <h5>Connect with us</h5>
           <?php dynamic_sidebar( 'social-menu' ); ?>
-        </div>
+        </nav>
       </div>
 		
 	  <div class="program-institute">

@@ -90,6 +90,10 @@ function gtwhiteandgold_scripts_styles() {
     $uri = get_template_directory_uri() . '/css/opp.css';
     wp_enqueue_style( 'gtwhiteandgold-opp', $uri );
   }
+  if ( is_singular( 'post_speaker' ) ) {
+    $uri = get_template_directory_uri() . '/css/speaker.css';
+    wp_enqueue_style( 'gtwhiteandgold-speaker', $uri );
+  }
 
   // Loads fontawesome icons
   wp_enqueue_style( 'gtwhiteandgold-fontawesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css' );

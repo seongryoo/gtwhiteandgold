@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-	<div class="default">
+	<main class="default" id="content" role="main">
 		
 		<div class="container">
 			<?php /* The loop */ ?>
@@ -22,6 +22,6 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?> 
 		</div>
 		
-    </div>
+    </main>
 
 <?php get_footer(); ?>

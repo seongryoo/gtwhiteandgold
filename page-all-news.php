@@ -10,21 +10,18 @@
 get_header(); 
 
 $nodes = simplexml_load_file("http://hg.gatech.edu/node/635164/xml");
-$article_cutoff = 9;
 ?>
-<main class="news" id="content" role="main">
+<main class="news" role="main" id="content">
 	<div class="container">
 		<?php /* The loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 		<?php the_content(); ?>
 		<?php endwhile; // end of the loop. ?> 
 		
-		<h2>Recent news</h2>
+		<h1>All News</h1>
 		<div class="row">
 		<?php
-		$total_articles = count($nodes->node);
-		for ($i = 0; $i < $total_articles && $i < $article_cutoff; $i++) {
-			$node = $nodes->node[$i];
+		foreach ($nodes->node as $node) {
 			?>
 			<div class="col-md-4">
 				<?php if ($node->article_url) {
@@ -65,11 +62,6 @@ $article_cutoff = 9;
 					</div>
 				</a>
 			</div>
-			<?php
-		}
-		if ( $total_articles > $article_cutoff ) {
-			?>
-			<a href="/all-news" class="btn btn-gt btn-centered">All news articles (<?php echo $total_articles; ?>)</a>
 			<?php
 		}
 		?>
