@@ -13,11 +13,11 @@
 get_header();
 ?>
 <main class="index" id="content" role="main">
-	<div class="banner" style="background: url(<?php the_post_thumbnail_url(); ?>) no-repeat center center; background-size: cover;">
+	<div class="home-banner banner" style="background: url(<?php the_post_thumbnail_url(); ?>) no-repeat center center; background-size: cover;">
 		<div class="container">
 			<div class="row">
 				<div class="left col-md-6">
-					<h1><?php the_title(); ?></h1>
+					<h1 class="visually-hidden"><?php the_title(); ?></h1>
 					<!-- <p><a href="https://livingbuilding.gatech.edu" aria-label="Kendeda Living Building main website" target="_blank">Housed in the Kendeda Building For Sustainable Design</a></p> -->
 					<!-- <p><?php // the_field( "subheading" ); ?></p> -->
 				</div>
@@ -130,8 +130,13 @@ get_header();
 									</div>
 									<div class="col-md-9">
 										<h4 class="card-title"><?php echo $event->title ?></h4>
-										<p><time class="event-time" datetime="<?php echo $event->start; ?>"><?php echo date("g:i A", $start); ?></time> - <time class="event-time" datetime="<?php echo $event->end; ?>"><?php echo date("g:i A T", $end); ?></time> | <span class="event-location"><?php echo $event->location; ?></span></p>
-										<?php echo $node->summary ?>
+										<p>
+											<time class="event-time" datetime="<?php echo $event->start; ?>">
+												<?php echo date("g:i A", $start); ?>
+											</time> - <time class="event-time" datetime="<?php echo $event->end; ?>">
+												<?php echo date("g:i A T", $end); ?>
+											</time> | <span class="event-location"><?php echo $event->location; ?></span></p>
+										<?php echo $event->summary ?>
 									</div>
 								</div>
 								<?php

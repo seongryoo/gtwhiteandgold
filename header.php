@@ -16,7 +16,10 @@
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="https://use.typekit.net/ela2mmm.css?family=Din:400,400italic,600,600italic,700,700italic" media="all" />
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,500,500italic,700,700italic" media="all" />
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" media="all" />
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" media="all" />
 	<?php wp_head(); ?>
 </head>
 
@@ -36,31 +39,29 @@
 						?>
 					</a>
 				</div>
-				<div class="col program">
-					<a href="<?php bloginfo('url') ?>">
-						<?php bloginfo('name') ?>
-					</a>
-				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 			</div>
 
 		</div>
+		<div class="below-header container program">
+			<a href="<?php bloginfo('url') ?>">
+				<?php bloginfo('name') ?>
+			</a>
+		</div>
 
-		<nav aria-label="Main" class="navbar navbar-expand-lg navbar-light">
+		<nav aria-label="Main" class="navbar navbar-expand-lg navbar-light collapse navbar-collapse" id="navbarNav">
 			<div class="container">
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<?php 
-					wp_nav_menu(
-						array(
-							'theme_location' => 'primary',
-							'menu_class' => 'navbar-nav',
-							'li_class'  => 'nav-item'
-						)
-					);
-					?>
-				</div>
+				<?php 
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'menu_class' => 'navbar-nav',
+						'li_class'  => 'nav-item'
+					)
+				);
+				?>
 			</div>
 		</nav>
 	</header>

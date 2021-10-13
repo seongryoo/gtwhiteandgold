@@ -214,27 +214,18 @@ a, a:hover, a:visited {
   width: auto;
 }
 
-.header .program {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0;
+
+.below-header.program a {
+  margin: 1rem 0 0.75rem 0;
+  display: block;
+  font-family: 'din-2014', 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 2.325rem;
+  line-height: 1.01;
+  color: rgb(0, 48, 87);
+  text-decoration: none;
 }
 
-.header .program a,
-.header .program a:visited {
-  color: white;
-  font-family: 'Roboto Slab', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 1;
-  width: 8em;
-  text-decoration: none;
-  position: relative;
-  margin-left: 0.5rem;
-  padding-left: 0.5rem;
-  border-left: 2px solid rgba(255, 255, 255, 0.5);
-}
 /* Nav */
 .navbar {
   border-bottom: 1px solid #D6DBD4;
@@ -260,13 +251,11 @@ a, a:hover, a:visited {
   margin: 8px 0 0 0;
   line-height: 0.9rem;
 }
-
 .navbar-nav > li a {
   transition: color 0.2s, background 0.2s;
 }
 
 .navbar-nav > li a:hover {
-  color: #857437 !important;
   background: rgba(212,216,210,.35);
 }
 
@@ -295,6 +284,38 @@ a, a:hover, a:visited {
   color: #262626;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar {
+    background: white;
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    box-shadow: 0 8px 8px rgba(0,0,0,0.3);
+    border-bottom: 4px solid #b3a369;
+    box-sizing: border-box;
+    padding: 0 1rem;
+  }
+  .menu-nav-container {
+    width: 100%;
+  }
+  .navbar-nav > li:not(:last-child) {
+    border-right: none;
+  }
+  .navbar-nav li {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .navbar-nav li:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+  }
+  .navbar-nav li a,
+  .navbar-nav li a:hover,
+  .navbar-nav li a:visited {
+    padding: 0.75rem;
+    color: black;
+  }
 }
 
 .menu-nav-container {
@@ -819,9 +840,6 @@ a, a:hover, a:visited {
 .gt-logo img {
   width: 170px;
 }
-.gt-logo {
-  padding-left: 15px;
-}
 .gt-logo img {
   padding: 0;
   margin: 0;
@@ -834,8 +852,13 @@ a, a:hover, a:visited {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding: 0;
   height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .container .navbar-toggler {
+  padding: 8px;
+  margin-right: -8px;
 }
 
 .banner {
@@ -862,6 +885,12 @@ a, a:hover, a:visited {
   color: black;
 }
 
+.banner.home-banner h1 {
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 900;
+  color: rgb(0, 48, 87);
+}
+
 /* Accessibility styling */
 .skip-content a:not(:focus) {
   position: absolute !important;
@@ -886,4 +915,15 @@ a, a:hover, a:visited {
   z-index: 10;
   opacity: 0.9;
   background: white;
+}
+
+/* From a11yproject */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
