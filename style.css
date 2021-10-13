@@ -327,6 +327,9 @@ a, a:hover, a:visited {
 }
 
 @media (min-width: 992px) {
+  .collapse:not(.show) {
+    display: block;
+  }
   .header .navbar-toggler {
     display: none;
   }
